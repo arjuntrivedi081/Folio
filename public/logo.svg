@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 32" fill="none">
+  <!-- Monogram Box -->
+  <rect x="0" y="0" width="32" height="32" rx="4" fill="#183B32"/>
+  <path d="M10 8H22V11H13V14.5H20V17.5H13V24H10V8Z" fill="#FAF8F4"/>
+  <!-- Typographic wordmark -->
+  <text x="42" y="22" font-family="'Source Serif 4', Georgia, serif" font-size="20" font-weight="600" fill="#141413" letter-spacing="-0.02em">Folio</text>
+</svg>

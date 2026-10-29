@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="6" fill="#FAF8F4"/>
+  <!-- Page boundary with folded corner -->
+  <path d="M7 4H20L25 9V28H7V4Z" stroke="#141413" stroke-width="1.75" stroke-linejoin="round"/>
+  <!-- Folded corner with deep ink accent -->
+  <path d="M20 4V9H25L20 4Z" fill="#183B32" stroke="#141413" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Monogram F -->
+  <line x1="12" y1="10.5" x2="12" y2="22.5" stroke="#141413" stroke-width="2" stroke-linecap="round"/>
+  <line x1="12" y1="10.5" x2="18.5" y2="10.5" stroke="#141413" stroke-width="2" stroke-linecap="round"/>
+  <line x1="12" y1="15.5" x2="16.5" y2="15.5" stroke="#141413" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,90 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@theme {
+  --color-canvas: var(--bg-canvas);
+  --color-surface: var(--bg-surface);
+  --color-subtle: var(--bg-subtle);
+  --color-border-hairline: var(--border-hairline);
+  --color-border-subtle: var(--border-subtle);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-ink: var(--accent-ink);
+  --color-ink-hover: var(--accent-ink-hover);
+  --color-ink-subtle: var(--accent-ink-subtle);
+
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-ui);
+  --font-mono: var(--font-mono);
+}
+
+@layer base {
+  * {
+    border-color: var(--border-hairline);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: var(--leading-body);
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Editorial Serif headings */
+  .font-serif-heading {
+    font-family: var(--font-serif);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  /* Monospace for sizes, codes, tabular data */
+  .tabular-numbers {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-hairline);
+    border-radius: var(--radius-xs);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+  }
+
+  /* Accessible focus rings */
+  :focus-visible {
+    outline: 2px solid var(--ring-focus);
+    outline-offset: 2px;
+  }
+
+  /* Skip to content link */
+  .skip-to-content:focus {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    background: var(--text-primary);
+    color: var(--text-inverse);
+    border-radius: var(--radius-sm);
+    outline: none;
+  }
+}

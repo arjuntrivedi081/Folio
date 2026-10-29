@@ -1,0 +1,77 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny every other collection and path
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidResource(data) {
+      return data.keys().hasOnly([
+        'title', 'titleLower', 'description', 'resourceType', 'examType',
+        'academicYear', 'unit', 'tags', 'keywords', 'subjectId', 'subjectName',
+        'courseId', 'courseName', 'departmentId', 'departmentName',
+        'universityId', 'universityName', 'semester', 'status', 'storagePath',
+        'fileName', 'mimeType', 'fileSize', 'viewsCount', 'downloadsCount',
+        'views_count', 'downloads_count', 'uploaderId', 'uploaderName',
+        'createdAt', 'updatedAt'
+      ])
+      && data.title is string && data.title.size() >= 1 && data.title.size() <= 200
+      && data.resourceType in [
+        'notes', 'past_papers', 'mst_papers', 'est_papers', 'lab_manuals',
+        'practical_papers', 'viva_questions', 'assignments',
+        'previous_year_papers', 'syllabus'
+      ]
+      && data.status in ['published', 'draft']
+      && data.fileSize is number && data.fileSize > 0 && data.fileSize <= 26214400; // Under 25 MB
+    }
+
+    function isValidTaxonomy(data) {
+      return data.name is string && data.name.size() >= 1 && data.name.size() <= 100;
+    }
+
+    // Resources collection
+    // Security note: In this no-auth architecture, draft resources are readable
+    // by status query to allow the curator portal to manage drafts without user accounts.
+    // Draft document titles and metadata are therefore not confidential.
+    match /resources/{resourceId} {
+      allow get: if resource.data.status in ['published', 'draft'];
+      allow list: if resource.data.status in ['published', 'draft'];
+      allow create, update: if isValidResource(request.resource.data);
+      allow delete: if true;
+    }
+
+    // Curriculum taxonomy collections: public read, create/update validated (1-100 chars), delete allowed
+    match /subjects/{subjectId} {
+      allow read: if true;
+      allow create, update: if isValidTaxonomy(request.resource.data);
+      allow delete: if true;
+    }
+
+    match /courses/{courseId} {
+      allow read: if true;
+      allow create, update: if isValidTaxonomy(request.resource.data);
+      allow delete: if true;
+    }
+
+    match /departments/{departmentId} {
+      allow read: if true;
+      allow create, update: if isValidTaxonomy(request.resource.data);
+      allow delete: if true;
+    }
+
+    match /universities/{universityId} {
+      allow read: if true;
+      allow create, update: if isValidTaxonomy(request.resource.data);
+      allow delete: if true;
+    }
+
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow create, update: if isValidTaxonomy(request.resource.data);
+      allow delete: if true;
+    }
+  }
+}

@@ -1,0 +1,147 @@
+:root {
+  /* --------------------------------------------------
+   * 1. Canvas, Surface & Hairline Colors
+   * -------------------------------------------------- */
+  --bg-canvas: #FAF8F4;        /* Warm off-white page canvas */
+  --bg-surface: #FFFFFF;       /* Crisp white content containers */
+  --bg-subtle: #F4F1EA;        /* Low-contrast neutral tint */
+  --bg-elevated: #FFFFFF;      /* Modals & floating drawers */
+
+  --border-hairline: #E7E3DA;  /* 1px subtle hairline border */
+  --border-subtle: #DFD9CE;    /* Secondary hairline divider */
+  --border-strong: #141413;    /* High-contrast dark hairline */
+
+  /* --------------------------------------------------
+   * 2. Typography Colors
+   * -------------------------------------------------- */
+  --text-primary: #141413;     /* Near-black primary text */
+  --text-secondary: #5C5955;   /* Balanced neutral for secondary prose */
+  --text-muted: #87837B;       /* Low-contrast metadata & hints */
+  --text-inverse: #FAF8F4;     /* Light text on dark surfaces */
+
+  /* --------------------------------------------------
+   * 3. Accent Palette - Restrained Deep Ink Green
+   * -------------------------------------------------- */
+  --accent-ink: #183B32;        /* Primary deep ink green */
+  --accent-ink-hover: #112A24;  /* Darkened interactive hover */
+  --accent-ink-active: #0B1E19; /* Pressed state */
+  --accent-ink-subtle: #EFF4F2; /* Soft background tint */
+  --accent-ink-border: #9CB2A9; /* Tinted hairline boundary */
+
+  /* --------------------------------------------------
+   * 4. Functional Semantic Accents
+   * -------------------------------------------------- */
+  --accent-danger: #9E2B25;
+  --accent-danger-subtle: #FDF2F1;
+  --accent-warning: #946300;
+  --accent-warning-subtle: #FFF9ED;
+  --accent-success: #1C5436;
+  --accent-success-subtle: #EEF7F1;
+
+  /* --------------------------------------------------
+   * 5. Radius Scale (Strict 4–10px architectural precision)
+   * -------------------------------------------------- */
+  --radius-xs: 4px;            /* Tags, chips, micro controls */
+  --radius-sm: 6px;            /* Form inputs, buttons, segmented tabs */
+  --radius-md: 8px;            /* Resource cards, dropdowns */
+  --radius-lg: 10px;           /* Large dialogs, drawers */
+
+  /* --------------------------------------------------
+   * 6. Spacing Scale (8px rhythm)
+   * -------------------------------------------------- */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+
+  /* --------------------------------------------------
+   * 7. Editorial Typography Settings
+   * -------------------------------------------------- */
+  --font-ui: 'Inter Variable', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Type Scale */
+  --text-xs: 0.75rem;          /* 12px */
+  --text-sm: 0.875rem;         /* 14px */
+  --text-base: 1rem;           /* 16px */
+  --text-lg: 1.125rem;         /* 18px */
+  --text-xl: 1.25rem;          /* 20px */
+  --text-2xl: 1.5rem;          /* 24px */
+  --text-3xl: 1.875rem;        /* 30px */
+  --text-4xl: 2.25rem;         /* 36px */
+  --text-hero: clamp(2.25rem, 4.5vw, 3.75rem);
+
+  /* Line Heights */
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-body: 1.6;         /* Comfortable 1.6 body line-height */
+  --leading-relaxed: 1.7;
+
+  /* Letter Spacing */
+  --tracking-tighter: -0.03em;
+  --tracking-tight: -0.015em;  /* Refined display headline tracking */
+  --tracking-normal: 0em;
+  --tracking-wide: 0.04em;
+
+  /* Measure & Viewport Constraints */
+  --measure-reading: 68ch;
+  --container-max: 1200px;
+
+  /* --------------------------------------------------
+   * 8. Shadows & Focus Elevation
+   * -------------------------------------------------- */
+  --ring-focus: #183B32;
+  --shadow-hairline: 0 1px 2px 0 rgba(20, 20, 19, 0.04);
+  --shadow-modal: 0 12px 32px -4px rgba(20, 20, 19, 0.08), 0 4px 12px -2px rgba(20, 20, 19, 0.04);
+
+  /* --------------------------------------------------
+   * 9. Motion Curves & Durations
+   * -------------------------------------------------- */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-normal: 280ms;
+  --duration-slow: 380ms;
+}
+
+/* Tasteful consistent dark mode tokens */
+.dark {
+  --bg-canvas: #121312;
+  --bg-surface: #191B19;
+  --bg-subtle: #202220;
+  --bg-elevated: #242624;
+
+  --border-hairline: #2C2F2C;
+  --border-subtle: #373B37;
+  --border-strong: #EAE6DF;
+
+  --text-primary: #FAF8F4;
+  --text-secondary: #AAA69D;
+  --text-muted: #79766F;
+  --text-inverse: #141413;
+
+  --accent-ink: #3F7060;
+  --accent-ink-hover: #4C8271;
+  --accent-ink-active: #5B9582;
+  --accent-ink-subtle: #192621;
+  --accent-ink-border: #2D4C40;
+
+  --accent-danger: #D65A50;
+  --accent-danger-subtle: #2C1816;
+  --accent-warning: #D99B26;
+  --accent-warning-subtle: #2A2112;
+  --accent-success: #3E9B68;
+  --accent-success-subtle: #15291F;
+
+  --ring-focus: #528E7C;
+  --shadow-hairline: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-modal: 0 12px 32px -4px rgba(0, 0, 0, 0.5);
+}

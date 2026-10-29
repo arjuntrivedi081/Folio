@@ -1,0 +1,137 @@
+{
+  "entities": {
+    "Resource": {
+      "title": "Resource",
+      "description": "An academic resource document, past paper, lecture note, or lab experiment record.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 200 },
+        "titleLower": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "resourceType": { "type": "string", "maxLength": 50 },
+        "examType": { "type": "string", "maxLength": 50 },
+        "academicYear": { "type": "string", "maxLength": 20 },
+        "unit": { "type": "string", "maxLength": 50 },
+        "tags": { "type": "array" },
+        "keywords": { "type": "array" },
+        "subjectId": { "type": "string", "maxLength": 128 },
+        "subjectName": { "type": "string", "maxLength": 150 },
+        "courseId": { "type": "string", "maxLength": 128 },
+        "courseName": { "type": "string", "maxLength": 150 },
+        "departmentId": { "type": "string", "maxLength": 128 },
+        "departmentName": { "type": "string", "maxLength": 150 },
+        "universityId": { "type": "string", "maxLength": 128 },
+        "universityName": { "type": "string", "maxLength": 150 },
+        "semester": { "type": "number" },
+        "status": { "type": "string", "enum": ["published", "draft"] },
+        "storagePath": { "type": "string", "maxLength": 500 },
+        "fileName": { "type": "string", "maxLength": 300 },
+        "mimeType": { "type": "string", "maxLength": 100 },
+        "fileSize": { "type": "number" },
+        "viewsCount": { "type": "number" },
+        "downloadsCount": { "type": "number" },
+        "uploaderId": { "type": "string", "maxLength": 128 },
+        "uploaderName": { "type": "string", "maxLength": 150 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "resourceType", "status", "storagePath", "fileName", "mimeType", "fileSize"]
+    },
+    "Subject": {
+      "title": "Subject",
+      "description": "An academic course syllabus subject entry.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 150 },
+        "nameLower": { "type": "string", "maxLength": 150 },
+        "code": { "type": "string", "maxLength": 50 },
+        "courseId": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "createdBy": { "type": "string", "maxLength": 128 }
+      },
+      "required": ["name", "nameLower"]
+    },
+    "Course": {
+      "title": "Course",
+      "description": "An academic degree or program curriculum.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 150 },
+        "nameLower": { "type": "string", "maxLength": 150 },
+        "degree": { "type": "string", "maxLength": 50 },
+        "departmentId": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "createdBy": { "type": "string", "maxLength": 128 }
+      },
+      "required": ["name", "nameLower"]
+    },
+    "Department": {
+      "title": "Department",
+      "description": "An academic department in the institution.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 150 },
+        "nameLower": { "type": "string", "maxLength": 150 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "createdBy": { "type": "string", "maxLength": 128 }
+      },
+      "required": ["name", "nameLower"]
+    },
+    "University": {
+      "title": "University",
+      "description": "An academic university institution.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 150 },
+        "nameLower": { "type": "string", "maxLength": 150 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "createdBy": { "type": "string", "maxLength": 128 }
+      },
+      "required": ["name", "nameLower"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Resource categorization such as notes, past-papers, or syllabus.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 150 },
+        "nameLower": { "type": "string", "maxLength": 150 },
+        "slug": { "type": "string", "maxLength": 100 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "createdBy": { "type": "string", "maxLength": 128 }
+      },
+      "required": ["name", "nameLower"]
+    }
+  },
+  "firestore": {
+    "/resources/{resourceId}": {
+      "schema": { "$ref": "Resource" },
+      "description": "Collection of academic documents, notes, test papers, and lab manuals."
+    },
+    "/subjects/{subjectId}": {
+      "schema": { "$ref": "Subject" },
+      "description": "Academic subjects list for curricular taxonomy."
+    },
+    "/courses/{courseId}": {
+      "schema": { "$ref": "Course" },
+      "description": "Degree programs and courses."
+    },
+    "/departments/{departmentId}": {
+      "schema": { "$ref": "Department" },
+      "description": "Academic departments."
+    },
+    "/universities/{universityId}": {
+      "schema": { "$ref": "University" },
+      "description": "Universities."
+    },
+    "/categories/{categoryId}": {
+      "schema": { "$ref": "Category" },
+      "description": "Resource categories."
+    }
+  }
+}
